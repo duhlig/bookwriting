@@ -7,13 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if user_signed_in? %>
-    <p>Hello <%= current_user.name %>!</p>
-<% end %>
+
 <ul class="hmenu">
   <%= render 'devise/menu/registration_items' %>
   <%= render 'devise/menu/login_items' %>
 </ul>
+<% if user_signed_in? %>
+    <p>Hello <%= current_user.name %>!</p>
+
+<% end %>
 <p class="notice"><%= notice %></p>
 
 <p class="alert"><%= alert %></p>

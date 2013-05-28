@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :name
 
   validates :name, :presence => true
+
+  has_many :books
 end
