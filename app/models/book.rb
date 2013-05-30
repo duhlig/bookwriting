@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
   attr_accessible :text, :title, :user_id
 
-  belongs_to :users
+  belongs_to :user
 end

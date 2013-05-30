@@ -9,17 +9,20 @@
     <th></th>
     <th></th>
   </tr>
-
+<%# if @book.find_all_by_user_id(1) %>
 <% @books.each do |book| %>
   <tr>
-    <td><%= book.title %></td>
-    <td><%= book.text %></td>
-    <td><%= book.user_id %></td>
-    <td><%= link_to 'Show', book %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <% if book.user_id == @@currentUser %>
+        <td><%= book.title %></td>
+        <td><%= book.text %></td>
+        <td><%= book.user_id %></td>
+        <td><%= link_to 'Show', book %></td>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   <% end %>
+   </tr>
 <% end %>
+
 </table>
 
 <br />
