@@ -15,13 +15,21 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
+
+  <div class="field">
+    <%= f.label :abstract %><br />
+    <%= f.text_area :abstract %>
+  </div>
+
   <div class="field">
     <%= f.label :text %><br />
-    <%= f.text_area :text %>
+    <%= f.text_area :text, :class => 'ckeditor' %>
   </div>
+
   <div class="field">
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

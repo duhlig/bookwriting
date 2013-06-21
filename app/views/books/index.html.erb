@@ -3,18 +3,19 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Text</th>
+    <th>Abstract</th>
     <th>User</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-<%# if @book.find_all_by_user_id(1) %>
+
 <% @books.each do |book| %>
   <tr>
     <% if book.user_id == @@currentUser %>
         <td><%= book.title %></td>
-        <td><%= book.text %></td>
+        <td><%= truncate book.abstract, length: 80 %></td>
+        <!--<td><%# book.text %></td> -->
         <td><%= book.user_id %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
