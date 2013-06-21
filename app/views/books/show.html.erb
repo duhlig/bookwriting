@@ -1,4 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
 <p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
 
 <p>
   <b>Title:</b>
@@ -6,15 +15,13 @@
 </p>
 
 <p>
-  <b>Text:</b>
-  <%= @book.text %>
-</p>
-
-<p>
   <b>User:</b>
   <%= @book.user_id %>
 </p>
 
+<p>
+  <b>Text:</b><br/>
+  <%= raw @book.text %>
+</p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+</body>
