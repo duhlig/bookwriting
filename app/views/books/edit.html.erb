@@ -1,5 +1,12 @@
 <h2>Editing book</h2>
 
+<h3>Previous Versions</h3>
+<ul>
+<% @book.versions.each do |v| %>
+  <li><%= v.created_at %> | <%= User.find(v.whodunnit.to_i).name %> | <%= link_to "revert", revert_version_path(v), :method => :post %></li>
+<% end %>
+</ul>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @book %> |
