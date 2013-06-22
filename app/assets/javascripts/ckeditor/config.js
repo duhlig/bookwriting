@@ -26,6 +26,33 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about' }
 	];
 
+    config.toolbar_bookAbstract = [
+        { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+        { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Scayt' ] },
+        { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+        { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] },
+        { name: 'tools', items: [ 'Maximize' ] },
+        { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source' ] },
+        { name: 'others', items: [ '-' ] },
+        '/',
+        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ] },
+        { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote' ] }    ];
+
+    // taken from http://ckeditor.com/ckeditor_4.1rc/samples/plugins/toolbar/toolbar.html
+    config.toolbar_bookContent = [
+        { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+        { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Scayt' ] },
+        { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+        { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] },
+        { name: 'tools', items: [ 'Maximize' ] },
+        { name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source' ] },
+        { name: 'others', items: [ '-' ] },
+        '/',
+        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ] },
+        { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote' ] },
+        { name: 'styles', items: [ 'Styles', 'Format' ] }
+    ];
+
 	// Remove some buttons, provided by the standard plugins, which we don't
 	// need to have in the Standard(s) toolbar.
 	config.removeButtons = 'Underline,Subscript,Superscript';
