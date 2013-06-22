@@ -16,7 +16,7 @@
   <tr>
     <% if book.user_id == @@currentUser %>
         <td><%= book.title %></td>
-        <td><%= truncate book.abstract, length: 80 %></td>
+        <td><%= raw truncate book.abstract, length: 80 %></td>
         <!--<td><%# book.text %></td> -->
         <td><%= book.user_id %></td>
         <td><%= book.updated_at %></td>
