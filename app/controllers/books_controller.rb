@@ -1,14 +1,6 @@
 class BooksController < ApplicationController
-  # GET /books
-  # GET /books.json
-  def index
-    @books = Book.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @books }
-    end
-  end
+  before_filter :authenticate_user!
+  before_filter :user_has_permission, :only => [:show, :edit, :update, :destroy]
 
   # GET /books/1
   # GET /books/1.json
@@ -82,7 +74,12 @@ class BooksController < ApplicationController
     end
   end
 
-  def version
+  private
+
+  def user_has_permission
     @book = Book.find(params[:id])
+    unless Authorship.exists?({:book_id => @book.id, :user_id => current_user.id})
+      redirect_to :back, :notice => "You do not have permission to access this book"
+    end
   end
 end

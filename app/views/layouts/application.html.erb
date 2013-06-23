@@ -14,10 +14,6 @@
 </ul>
 <% if user_signed_in? %>
     <p>Hello <%= current_user.name %>!</p>
-    <% @@currentUser = current_user.id %>
-
-    <h4><%= link_to 'Book-List', books_path %></h4>
-
 <% end %>
 <p class="notice"><%= notice %></p>
 

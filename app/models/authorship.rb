@@ -1,5 +1,8 @@
 class Authorship < ActiveRecord::Base
   belongs_to :user
   belongs_to :book
-  # attr_accessible :title, :body
+
+  def user_is_author?(user)
+    Authorship.exists?({:book_id => self.book.id, :user_id => user.id})
+  end
 end
