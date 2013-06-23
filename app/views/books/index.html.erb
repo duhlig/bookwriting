@@ -1,36 +1,34 @@
 <h2>Listing books</h2>
-
-<table>
+<%= yield %>
+<div class="rt"><%= link_to 'New Book', new_book_path %></div>
+<div><table style="text-align: left">
     <tr>
         <th>Title</th>
         <th>Abstract</th>
         <th>User</th>
-        <th>Version</th>
         <th>Updated</th>
         <th>Created</th>
+        <th>Version</th>
         <th></th>
         <th></th>
         <th></th>
     </tr>
 
-<% @books.each do |book| %>
+<div><% @books.each do |book| %>
     <% if book.user_id == @@currentUser %>
 	<tr>
 		<td><%= book.title %></td>
 		<td><%= raw truncate book.abstract, length: 80 %></td>
 		<td><%= book.user.name %></td>
-        <td><%= book.versions.length %></td>
 		<td><%= book.updated_at %></td>
 		<td><%= book.created_at %></td>
+        <td><%= book.versions.length %></td>
 		<td><%= link_to 'Show', book %></td>
 		<td><%= link_to 'Edit', edit_book_path(book) %></td>
 		<td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	</tr>
-   <% end %>
+   <% end %> </div>
 <% end %>
 
 </table>
-
-<br />
-
-<%= link_to 'New Book', new_book_path %>
+</div>

@@ -2,27 +2,35 @@
 <html>
 <head>
   <title>Bookwriting</title>
-  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", "menu", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+  <div class="header">
+    <div id="logo">
+      <%= image_tag "book.jpg", :height => 80 %>
+    </div>
+    <div class="nav">
+       <ul>
+       <li><%= render 'devise/menu/registration_items' %></li>
+       <li><%= render  'devise/menu/login_items' %></li>
+       </ul>
+    </div><div class="clearfloat"> </div>
+  </div> <!-- end .header -->
 
-<ul class="hmenu">
-  <%= render 'devise/menu/registration_items' %>
-  <%= render 'devise/menu/login_items' %>
-</ul>
-<% if user_signed_in? %>
-    <p>Hello <%= current_user.name %>!</p>
-    <% @@currentUser = current_user.id %>
+  <div class="main">
+    <div class="section-titel">
+      <h1>Welcome <span>to Collaborative Book Writing</span></h1>
+    </div>
+    <div class="content">
+      <%= yield %>
+      <!--<div class="section-border-thick"></div> -->
+    </div><!-- end .content -->
 
-    <h4><%= link_to 'Book-List', books_path %></h4>
+  </div>  <!-- end .main -->
 
-<% end %>
-<p class="notice"><%= notice %></p>
-
-<p class="alert"><%= alert %></p>
-<%= yield %>
-
+</div> <!-- end .container -->
 </body>
 </html>

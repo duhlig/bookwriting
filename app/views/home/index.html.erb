@@ -1,3 +1,20 @@
 <h1>Collaborative Book Writing</h1>
-<h2>Dashboard</h2>
+<div id="intro"><br/>
+  <div class="fltlft"><%= image_tag "cloud.jpg", :height => 150 %></div>
+    <h3>Online Book Writing as Cloud Service</h3>
+    <h4>Please sign in or sign up to write your own book</h4>
+    <div class="clearfloat"> </div>
+</div>
 
+
+  <div class="notice"><%= notice %></div>
+  <div class="alert"><%= alert %></div>
+  <% if user_signed_in? %>
+      <script> document.getElementById('intro').style.visibility = 'hidden';</script>
+      <h2>Dashboard</h2>
+      <h4>Hello <%= current_user.name %>!</h4>
+      <% @@currentUser = current_user.id %>
+
+      <h2><%= link_to 'Your Book-List', books_path %></h2>
+
+  <% end %>
