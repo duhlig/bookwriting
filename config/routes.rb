@@ -65,4 +65,5 @@ Bookwriting::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
+  post "authorships/:id/revoke" => "authorships#revoke", :as => "revoke_access"
 end

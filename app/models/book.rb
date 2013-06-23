@@ -1,7 +1,12 @@
 class Book < ActiveRecord::Base
-  attr_accessible :text, :title, :user_id, :abstract
+  attr_accessible :text, :title, :abstract
 
-  belongs_to :user
+  has_many :authorships, :dependent => :destroy
+  has_many :users, :through => :authorships
 
   has_paper_trail :on => [:update, :destroy]
+
+  def author_names
+    self.users.map { |u| u.name }
+  end
 end

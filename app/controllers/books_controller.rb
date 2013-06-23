@@ -41,6 +41,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(params[:book])
+    @book.users = [ current_user ]
 
     respond_to do |format|
       if @book.save

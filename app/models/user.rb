@@ -9,5 +9,7 @@ class User < ActiveRecord::Base
 
   validates :name, :presence => true
 
-  has_many :books
+  has_many :authorships, :dependent => :destroy
+  has_many :books, :through => :authorships
+
 end
