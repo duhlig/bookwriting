@@ -1,20 +1,44 @@
-<h1>Collaborative Book Writing</h1>
+<!--
 <div id="intro"><br/>
   <div class="fltlft"><%= image_tag "cloud.jpg", :height => 150 %></div>
     <h3>Online Book Writing as Cloud Service</h3>
     <h4>Please sign in or sign up to write your own book</h4>
     <div class="clearfloat"> </div>
-</div>
+</div>-->
 
+<h2>Your Books</h2>
 
-  <div class="notice"><%= notice %></div>
-  <div class="alert"><%= alert %></div>
-  <% if user_signed_in? %>
-      <script> document.getElementById('intro').style.visibility = 'hidden';</script>
-      <h2>Dashboard</h2>
-      <h4>Hello <%= current_user.name %>!</h4>
-      <% @@currentUser = current_user.id %>
+<div class="rt"><%= link_to 'New Book', new_book_path %></div>
+<div><table style="text-align: left">
+  <tr>
+    <th>Title</th>
+    <th>Abstract</th>
+    <th>Authors</th>
+    <th>Version</th>
+    <th>Updated</th>
+    <th>Created</th>
+    <th colspan="3">Actions</th>
+  </tr>
 
-      <h2><%= link_to 'Your Book-List', books_path %></h2>
-
+  <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= raw truncate book.abstract, length: 80 %></td>
+        <td><%= book.author_names.join ", " %></td>
+        <td><%= book.versions.length + 1 %></td>
+        <td><%= book.updated_at %></td>
+        <td><%= book.created_at %></td>
+        <td class="rt-book"><%= link_to 'Show', book %></td>
+        <td class="rt-book"><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td class="rt-book">
+          <% if book.users.length > 1 %>
+              <%= link_to 'Leave Book',  revoke_access_path(book.user_authorship(current_user)), :method => :post %>
+          <% else %>
+              <%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
   <% end %>
+
+</table>
+</div>

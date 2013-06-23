@@ -2,13 +2,12 @@ class Book < ActiveRecord::Base
   attr_accessible :text, :title, :abstract, :original_updated_at
   validates :title, :presence => true
   validates :text, :presence => true
+  validate :handle_conflict, only: :update
 
   has_many :authorships, :dependent => :destroy
   has_many :users, :through => :authorships
 
   has_paper_trail :on => [:update, :destroy]
-
-  validate :handle_conflict, only: :update
 
   def original_updated_at
     @original_updated_at || updated_at.to_f
@@ -28,5 +27,9 @@ class Book < ActiveRecord::Base
 
   def author_names
     self.users.map { |u| u.name }
+  end
+
+  def user_authorship(user)
+    Authorship.find_by_book_id_and_user_id(self.id, user.id)
   end
 end
