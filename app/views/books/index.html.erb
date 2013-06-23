@@ -1,34 +1,51 @@
 <h2>Listing books</h2>
-
-<table>
+<%= yield %>
+<div class="rt"><%= link_to 'New Book', new_book_path %></div>
+<div><table style="text-align: left">
     <tr>
         <th>Title</th>
         <th>Abstract</th>
+<<<<<<< HEAD
         <th>Authors</th>
         <th>Version</th>
+=======
+        <th>User</th>
+>>>>>>> origin/branch-layout
         <th>Updated</th>
         <th>Created</th>
+        <th>Version</th>
         <th></th>
         <th></th>
         <th></th>
     </tr>
 
+<<<<<<< HEAD
 <% @books.each do |book| %>
 	<tr>
 		<td><%= book.title %></td>
 		<td><%= raw truncate book.abstract, length: 80 %></td>
 		<td><%= book.author_names.join ", " %></td>
         <td><%= book.versions.length + 1 %></td>
+=======
+<div><% @books.each do |book| %>
+    <% if book.user_id == @@currentUser %>
+	<tr>
+		<td><%= book.title %></td>
+		<td><%= raw truncate book.abstract, length: 80 %></td>
+		<td><%= book.user.name %></td>
+>>>>>>> origin/branch-layout
 		<td><%= book.updated_at %></td>
 		<td><%= book.created_at %></td>
+        <td><%= book.versions.length %></td>
 		<td><%= link_to 'Show', book %></td>
 		<td><%= link_to 'Edit', edit_book_path(book) %></td>
 		<td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	</tr>
+<<<<<<< HEAD
+=======
+   <% end %> </div>
+>>>>>>> origin/branch-layout
 <% end %>
 
 </table>
-
-<br />
-
-<%= link_to 'New Book', new_book_path %>
+</div>
