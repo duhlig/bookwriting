@@ -1,22 +1,28 @@
+<div class="fltrt">
+    <div class="rt-back">
+      <%= link_to 'Show', @book %>
+      <%= link_to 'Back', books_path %>
+    </div>
+</div>
 <h2>Editing book</h2>
-
 <h3>Authors</h3>
-<ul>
+<div class="version">
+  <ul>
   <% @book.authorships.each do |a| %>
       <li><%= link_to_unless a.user == current_user, "revoke access", revoke_access_path(a), :method => :post %> | <%= "#{a.user.name} (#{a.user.email})" %></li>
   <% end %>
-</ul>
-
+  </ul>
+</div>
+<div>
 <% if @book.versions.length > 0 %>
     <h3>Previous Versions</h3>
+    <div>
     <ul>
       <% @book.versions.each do |v| %>
           <li><%= v.created_at %> | <%= User.find(v.whodunnit.to_i).name %> | <%= link_to "revert", revert_version_path(v), :method => :post %></li>
       <% end %>
-    </ul>
+    </ul></div>
 <% end %>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @book %> |
-<%= link_to 'Back', books_path %>
+</div><div class="clearfloat"></div>
+<br/>
+<div><%= render 'form' %></div>

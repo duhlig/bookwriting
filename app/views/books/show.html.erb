@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<div class="fltrt">
+  <div class="rt-back">
+    <%= link_to 'Edit', edit_book_path(@book) %>
+    <%= link_to 'Back', books_path %>
+  </div>
+</div> <div class="clearfloat"></div>
 
 <p>
   <b>Title:</b>
@@ -23,4 +20,3 @@
   <%= raw @book.text %>
 </p>
 
-</body>
