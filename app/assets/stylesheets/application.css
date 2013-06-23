@@ -62,8 +62,11 @@ a:hover, a:active, a:focus {
 
 /* Dieser Container mit fester Breite umschlie�t die anderen div-Tags. */
 .container {
-    width: 960px;
+    min-width: 700px;
+    max-width: 960px;
     background-color: #FFF;
+    padding-left: 25px;
+    padding-right: 25px;
     margin: 0 auto; /* Der mit der Breite gekoppelte automatische Wert an den Seiten zentriert das Layout. */
     /* fuer footer-positionierung */
     position: relative;
@@ -165,9 +168,14 @@ p.indent {
     padding-bottom: 20px;
 }
 .rt a{
+    background-color: #55BF1C;
+    padding: 10px;
+    color: #333333;
+    /*
     background-color: greenyellow;
     padding: 10px;
     color: #ffffff;
+    */
 }
 .rt-back a{
     background-color: #006CD3;
@@ -176,6 +184,12 @@ p.indent {
 }
 .rt-book a{
     background-color: gainsboro;
+    padding: 10px;
+    color: #333333;
+}
+
+.rt-book a.delete{
+    background-color: #BF1900;
     padding: 10px;
     color: #ffffff;
 }

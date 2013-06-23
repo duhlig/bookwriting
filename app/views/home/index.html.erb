@@ -34,7 +34,7 @@
           <% if book.users.length > 1 %>
               <%= link_to 'Leave Book',  revoke_access_path(book.user_authorship(current_user)), :method => :post %>
           <% else %>
-              <%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete" %>
           <% end %>
         </td>
       </tr>

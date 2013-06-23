@@ -16,7 +16,7 @@
 <div>
 <% if @book.versions.length > 0 %>
     <h3>Previous Versions</h3>
-    <div>
+    <div class="version">
     <ul>
       <% @book.versions.each do |v| %>
           <li><%= v.created_at %> | <%= User.find(v.whodunnit.to_i).name %> | <%= link_to "revert", revert_version_path(v), :method => :post %></li>
