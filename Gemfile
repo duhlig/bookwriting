@@ -26,6 +26,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'ckeditor'
 gem 'paper_trail'
+gem 'turbolinks'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
