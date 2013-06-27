@@ -24,9 +24,14 @@ gem 'jquery-rails'
 
 # Authentication
 gem 'devise'
+# WYSIWYG Editor
 gem 'ckeditor'
+# Versioning
 gem 'paper_trail'
+# Fasteer Pageloads
 gem 'turbolinks'
+
+gem 'bullet', group: :development
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

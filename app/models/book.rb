@@ -30,6 +30,10 @@ class Book < ActiveRecord::Base
   end
 
   def user_authorship(user)
-    Authorship.find_by_book_id_and_user_id(self.id, user.id)
+    Authorship.where(book_id: self.id, user_id: user.id).first
+  end
+
+  def version_num
+    Version.where(item_id: self.id, item_type: 'Book').count + 1
   end
 end

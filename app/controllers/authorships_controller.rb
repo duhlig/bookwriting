@@ -3,12 +3,18 @@ class AuthorshipsController < ApplicationController
 
   def revoke
     @authorship = Authorship.find(params[:id])
-    if @authorship.user_is_author?(current_user)
+    if can_revoke?(@authorship.book_id, current_user.id)
       @authorship.destroy
       redirect_to :back, :notice => "Revoked #{@authorship.user.name}s access to #{@authorship.book.title}"
     else
       redirect_to :back, :notice => "No permission"
     end
+  end
+
+  private
+
+  def can_revoke?(book_id, user_id)
+    Authorship.exists?(:book_id => book_id, :user_id => user_id)
   end
 
 end
