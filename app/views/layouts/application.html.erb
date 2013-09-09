@@ -2,50 +2,42 @@
 <html>
 <head>
   <title>Bookwriting</title>
-  <%= stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag 'application', 'menu', :media => 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 <div class="container">
+  <div class="header">
+    <div id="logo">
+      <%= link_to image_tag('book.jpg', :height => 80), root_path %>
+    </div>
+    <div class="nav">
+       <ul>
+       <li><%= render 'devise/menu/registration_items' %></li>
+       <li><%= render  'devise/menu/login_items' %></li>
+       </ul>
+    </div><div class="clearfloat"> </div>
+  </div> <!-- end .header -->
 
-  <header class="navbar navbar-fixed-top">
-
-    <nav class="navbar-inner">
-      <div class="container">
-        <%= link_to "BookWriting", root_path , id: "logo" %>
-        <ul class="nav pull-right">
-        <li><%= render 'devise/menu/registration_items' %></li>
-        <li><%= render  'devise/menu/login_items' %></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!--<div><%# link_to image_tag("book.jpg", :height => 50), root_path %> </div> -->
-
-  <main>
+  <div class="main">
     <div class="section-titel">
-    <!-- <h1>Welcome <span>to Collaborative Book Writing</span></h1> -->
-    </div><br>
-    <% flash.each do |name, msg| %>
-        <% if msg.is_a?(String) %>
-            <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-                <a class="close" data-dismiss="alert">&#215;</a>
-                <%= content_tag :div, msg, :id => "flash_#{name}" %>
-            </div>
-            <% end %>
-    <% end %>
-    <%= yield %>
-    <footer>
-        <small>
-          <a href="#">Rails Prototype</a>
-          by Duhlig and Bredfeldt
-        </small>
-        <!--<p><%= debug(params) if Rails.env.development? %> </p> -->
-    </footer>
-  </main>
+      <h1>Welcome <span>to Collaborative Book Writing</span></h1>
+    </div>
+    <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
+    <div class="content">
+      <%= yield %>
+      <!--<div class="section-border-thick"></div> -->
+    </div><!-- end .content -->
+  <!--
+  <div class="footer">
+    <p><%= debug(params) if Rails.env.development? %> </p>
+  </div>
+  -->
+  <!-- end .footer -->
+  </div>  <!-- end .main -->
 
-</div><!-- end .container -->
+</div> <!-- end .container -->
 </body>
 </html>

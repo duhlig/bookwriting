@@ -1,10 +1,9 @@
-<ol class="breadcrumb">
-  <li><%= link_to 'Home ', root_path %></li>
-  <li class="active">/ Edit</li>
-</ol>
 <div class="fltrt">
-  <button type="button" class="btn btn-info"><%= link_to 'Show Book', @book %></button>
-</div><div class="clearfloat"></div>
+    <div class="rt-back">
+      <%= link_to 'Show Book', @book %>
+      <%= link_to 'Back to Dashboard', root_path %>
+    </div>
+</div>
 <h2>Editing book</h2>
 <h3>Authors</h3>
 <div class="version">

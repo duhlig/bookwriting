@@ -1,0 +1,238 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+body {
+    font: 100%/1.4 Verdana, sans-serif;
+    background-color: #FFF;
+    margin: 0;
+    padding: 0;
+    color: #676767;
+}
+
+/* Damit der footer immer unten positioniert ist */
+html,body {
+    height:100%;
+}
+
+/* Element-/Tag-Selektoren */
+ul, ol, dl {
+    padding: 0;
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    padding-right: 15px;
+    /*padding-left: 15px;  */
+    font-family: 'Open Sans', sans-serif;
+}
+p {
+    margin-top: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+a img {
+    /* Kein blauen Rahmen, Standard in IE*/
+    border: none;
+}
+/* Die Reihenfolge der Stildefinitionen f�r die Hyperlinks der Site, einschlie�lich der Gruppe der Selektoren zum Erzeugen des Hover-Effekts, muss erhalten bleiben. ~~ */
+a:link {
+    color: #6E6C64;
+    text-decoration: none; /* Sofern Ihre Hyperlinks nicht besonders hervorgehoben werden sollen, empfiehlt es sich, zur schnellen visuellen Erkennung Unterstreichungen zu verwenden. */
+}
+a:visited {
+    color: #6E6C64;
+    text-decoration: none;
+}
+a:hover, a:active, a:focus {
+    /* gleiche Hover-Effekt beim Verwenden der Maus */
+    text-decoration: underline;
+}
+
+/* Dieser Container mit fester Breite umschlie�t die anderen div-Tags. */
+.container {
+    min-width: 700px;
+    max-width: 960px;
+    background-color: #FFF;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 0 auto; /* Der mit der Breite gekoppelte automatische Wert an den Seiten zentriert das Layout. */
+    /* fuer footer-positionierung */
+    position: relative;
+    min-height: 100%;
+}
+
+/* Kopfzeile keine feste Größe, sondern erstreckt sich �ber die gesamte Breite des Layouts */
+.header {
+    border-bottom: 1px solid #EEEEEE;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+}
+#logo {
+    float: left;
+    margin: 35px 0 10px;
+}
+
+/* Inhaltsbereich */
+.main {
+    padding: 0 0 4.5em;
+}
+
+/* Hauptinhalt*/
+.content {
+    padding: 15px 0 30px;
+}
+
+/* Fu�zeile */
+.footer {
+    padding: 15px 0 1px; /*10px 5px 1px*/
+    /*margin-top: 50px;*/
+    background-color: #EEEEEE;
+    font-size: 12px;
+
+    position: absolute;
+    bottom: 0;
+    width: 98%;
+}
+
+/* Verschiedene float/clear-Klassen */
+.fltrt {  /* Element nach rechts flie�en lassen */
+    float: right;
+    margin-left: 8px;
+}
+.fltlft { /* Element nach links flie�en lassen */
+    float: left;
+    margin-right: 8px;
+}
+.clearfloat { /* Diese Klasse kann in einem <br />-Tag oder leeren div-Tag als letztes Element nach dem letzten flie�enden div-Tag (im #container) platziert werden, wenn #footer entfernt oder aus dem #container herausgenommen wird. */
+    clear: both;
+    height: 0;
+    font-size: 1px;
+    line-height: 0px;
+}
+.gap {
+    padding: 5px;
+}
+
+/*Abschnittstitel*/
+.section-titel h1 {
+    padding: 25px 0;
+    margin: 0 0 10px;
+    border-bottom: 1px solid #EEEEEE;
+    font-size: 22px;
+    font-weight: 700;
+}
+.section-titel h1 span{
+    /*color: #AAAAAA;*/
+    font-weight: 300;
+    text-transform: none;
+}
+.section-border {
+    border-top: 1px solid #EEE;
+    margin-top: 25px;
+    padding-top: 25px;
+}
+.section-border-thick {
+    border-top: 2px solid #EEE;
+    margin-top: 25px;
+    padding-top: 25px;
+}
+
+/* Page Home*/
+.intro-pic img{
+    width: 85%;
+    border: none;
+}
+p.indent {
+    padding-left: 25px;
+}
+.indent img {
+    padding-left: 10px;
+    border: none;
+}
+.rt, .rt-back, .rt-book {
+    text-align: right;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+.rt a{
+    background-color: #55BF1C;
+    padding: 10px;
+    color: #333333;
+    /*
+    background-color: greenyellow;
+    padding: 10px;
+    color: #ffffff;
+    */
+}
+
+table th {
+    background: #f3f3f3;
+    padding: 10px 10px;
+}
+
+table td {
+    padding: 10px;
+    font-size: small;
+}
+
+table td.rt-book {
+    text-align: left;
+}
+
+table tr:hover td {
+    background: #f6f6f6;
+}
+
+.rt-back a{
+    background-color: #006CD3;
+    padding: 10px;
+    color: #ffffff;
+}
+.rt-book a{
+    background-color: gainsboro;
+    padding: 10px;
+    color: #333333;
+}
+
+.rt-book a.delete{
+    background-color: #BF1900;
+    padding: 10px;
+    color: #ffffff;
+}
+
+.notice {
+    color: green;
+    text-align: right;
+}
+.actions {
+    margin-top: 20px;
+    text-decoration-color: #ffffff;
+}
+.version{
+    padding-left: 30px;
+    padding-bottom: 15px;
+}
+#intro{
+    position: absolute;
+    width: 600px;
+    left: 40px;
+    top: 345px;
+}
+.img-hp {
+    position: absolute;
+    top: 250px;
+    right: 200px;
+}
