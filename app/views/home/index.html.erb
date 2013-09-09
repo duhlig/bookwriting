@@ -1,43 +1,41 @@
 <!--
 <div id="intro"><br/>
-<div class="fltlft"><%= image_tag 'cloud.jpg', :height => 150 %></div>
-<h3>Online Book Writing as Cloud Service</h3>
-<h4>Please sign in or sign up to write your own book</h4>
-<div class="clearfloat"> </div>
+  <div class="fltlft"><%= image_tag "cloud.jpg", :height => 150 %></div>
+    <h3>Online Book Writing as Cloud Service</h3>
+    <h4>Please sign in or sign up to write your own book</h4>
+    <div class="clearfloat"> </div>
 </div>-->
 
-<h2>Your Books</h2>
-
-<div class="rt"><%= link_to 'New Book', new_book_path %></div>
-<div>
-  <table style="text-align: left; width: 100%">
-    <tr>
-      <th>Title</th>
-      <th>Abstract</th>
-      <th>Authors</th>
-      <th>Version</th>
-      <th>Updated</th>
-      <th>Actions</th>
-    </tr>
-
-    <% @books.each do |book| %>
-        <tr>
-          <td><%= book.title %></td>
-          <td><%= raw truncate book.abstract, length: 80 %></td>
-          <td><%= book.author_names.join ", " %></td>
-          <td><%= book.version_num %></td>
-          <td><%= "#{time_ago_in_words(book.updated_at)} ago" %></td>
-          <td class="rt-book">
-            <%= link_to 'Show', book %>
-            <%= link_to 'Edit', edit_book_path(book) %>
+<div class="section"><h2><%= image_tag "book_icon.jpg" %><span style="padding-left: 10px">Your Books</span></h2></div>
+<button type="button" class="btn btn-success fltrt"><%= link_to 'New Book', new_book_path %></button><br>
+<div style="padding-top: 30px; min-height: 150px"><table style="text-align: left; width: 100%" class="table-bordered table-hover">
+  <thead><tr>
+    <th>Title</th>
+    <th>Abstract</th>
+    <th>Authors</th>
+    <th>Version</th>
+    <th>Updated</th>
+    <th>Actions</th>
+  </tr></thead>
+  <tbody>
+  <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= raw truncate book.abstract, length: 80 %></td>
+        <td><%= book.author_names.join ", " %></td>
+        <td><%= book.versions.length + 1 %></td>
+        <td><%= "#{time_ago_in_words(book.updated_at)} ago" %></td>
+        <td class="rt-book">
+           <button type="button" class="btn btn-info"><%= link_to 'Show', book %></button>
+            <button type="button" class="btn btn-primary"><%= link_to 'Edit', edit_book_path(book) %> </button>
             <% if book.users.length > 1 %>
-                <%= link_to 'Leave', revoke_access_path(book.user_authorship(current_user)), :method => :post, :class => "delete" %>
+              <button type="button" class="btn btn-warning"><%= link_to 'Leave',  revoke_access_path(book.user_authorship(current_user)), :method => :post, :class => "delete" %></button>
             <% else %>
-                <%= link_to 'Delete', book, method: :delete, data: {confirm: 'Are you sure?'}, :class => "delete" %>
-            <% end %>
-          </td>
-        </tr>
-    <% end %>
-
-  </table>
+          <button type="button" class="btn btn-danger"><%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete" %></button>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 </div>

@@ -1,0 +1,134 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+body{
+  padding-top: 60px;
+  background-image: url("bg1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-color: #BEA487;
+}
+main {
+  padding: 0 30px 30px 30px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border: 1px solid #d4d4d4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+.section {
+  color: #B1A599;
+  h1{
+    margin: 15px;
+    padding: 20px;
+  }
+}
+table{
+  th {
+    padding: 10px 10px;
+  }
+  td {
+    padding: 10px;
+    font-size: small;
+  }
+  td.rt-book {
+    text-align: left;
+  }
+}
+
+//font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
+button a, button a:hover, button a:focus{
+  color: white; text-decoration: none;
+}
+.btn btn-danger {
+  float: left;
+}
+.container, main {
+  border-radius: 6px;
+}
+.submit {
+  padding: 10px 10px 10px 0;
+}
+/* header */
+#logo {
+  float: left;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 1.5em;
+  //text-transform: uppercase;
+  //letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  //background-image: url(../assets/images/testlogo.png) ;
+  &:hover {
+    color: #656565;
+    text-decoration: none;
+  }
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+  a {
+    color: #555;
+    &:hover {
+      color: #222;
+    }
+  }
+  small {
+    float: left;
+  }
+}
+/* Verschiedene float/clear-Klassen */
+.fltrt {  /* Element nach rechts flie?en lassen */
+  float: right;
+  margin-left: 8px;
+}
+.fltlft { /* Element nach links flie?en lassen */
+  float: left;
+  margin-right: 8px;
+}
+.clearfloat {
+  clear: both;
+  height: 0;
+  font-size: 1px;
+  line-height: 0px;
+}
+/* table */
+.rt-back{
+  text-align: right;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  a{
+    background-color: #006CD3;
+    padding: 10px;
+    color: #ffffff;
+  }
+}
+.actions {
+  margin-top: 20px;
+  text-decoration-color: #ffffff;
+}
+.version{
+  padding-left: 30px;
+  padding-bottom: 15px;
+}

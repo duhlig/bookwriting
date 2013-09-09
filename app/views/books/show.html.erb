@@ -1,8 +1,9 @@
+<ol class="breadcrumb">
+  <li><%= link_to 'Home ', root_path %></li>
+  <li class="active">/ Show</li>
+</ol>
 <div class="fltrt">
-  <div class="rt-back">
-    <%= link_to 'Edit Book', edit_book_path(@book) %>
-    <%= link_to 'Back to Dashboard', root_path %>
-  </div>
+  <button type="button" class="btn btn-primary"><%= link_to 'Edit Book', edit_book_path(@book) %></button>
 </div> <div class="clearfloat"></div>
 
 <p>

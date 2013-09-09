@@ -79,7 +79,7 @@ class BooksController < ApplicationController
   def user_has_permission
     @book = Book.find(params[:id])
     unless Authorship.exists?({:book_id => @book.id, :user_id => current_user.id})
-      redirect_to :back, :notice => "You do not have permission to access this book"
+      redirect_to root_path, :notice => "You do not have permission to access this book"
     end
   end
 end
