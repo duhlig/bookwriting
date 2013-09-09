@@ -24,6 +24,9 @@ gem 'jquery-rails'
 
 # Authentication
 gem 'devise'
+# OAuth for devise
+gem 'omniauth'
+gem 'omniauth-twitter'
 # WYSIWYG Editor
 gem 'ckeditor'
 # Versioning

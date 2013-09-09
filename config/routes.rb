@@ -4,7 +4,7 @@ Bookwriting::Application.routes.draw do
 
   get "home/index"
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/authentication" }
 
 
   # The priority is based upon order of creation:
@@ -66,4 +66,6 @@ Bookwriting::Application.routes.draw do
 
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
   post "authorships/:id/revoke" => "authorships#revoke", :as => "revoke_access"
+
+  match "users/auth/:provider/callback" => "authentications#create"
 end
