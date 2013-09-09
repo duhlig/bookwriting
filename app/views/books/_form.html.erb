@@ -1,7 +1,7 @@
 <div><%= form_for(@book) do |f| %>
   <% if @book.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@book.errors.count, 'error') %> prohibited this book from being saved:</h2>
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
       <ul>
       <% @book.errors.full_messages.each do |msg| %>
@@ -11,11 +11,10 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :original_updated_at # updated_at time value, from the db, at the time when this form is displayed
-  %>
+  <%= f.hidden_field :original_updated_at %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <br/>

@@ -1,0 +1,24 @@
+$green: #4DAF7B;
+$red: #E55F3B;
+$blue: #5E90AF;
+$orange: #EBC85E;
+$brown: #B1A599;
+$brownDark: #8E8071;
+
+$textColor:             $brownDark;
+$btnSuccessBackground:             lighten($green, 10%);
+$btnSuccessBackgroundHighlight:    $green;
+$btnInfoBackground:                lighten($blue, 10%);
+$btnInfoBackgroundHighlight:        $blue;
+$btnDangerBackground:               lighten($red, 10%);
+$btnDangerBackgroundHighlight:      $red;
+$btnPrimaryBackground:              lighten($brown, 10%);
+$btnPrimaryBackgroundHighlight:     $brown;
+$btnWarningBackground:              lighten($orange, 10%);
+$btnWarningBackgroundHighlight:     $orange;
+$linkColor:             #8E8071;
+//$tableBackgroundHover: #fff0df;
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+
