@@ -139,4 +139,28 @@ div.field, div.actions {
   padding-top: 25px;
   margin-bottom: 10px;
 }
+field label{
+  font-size: 17px;
+}
 
+@media print {
+  body {
+    background-color: #FFF;
+    background-color: #5E90AF;
+  }
+  #container {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+  #line_items {
+    page-break-before: always;
+  }
+  head,header,#pdf_link {
+    display: none;
+  }
+  footer {
+    visibility: hidden;
+  }
+}

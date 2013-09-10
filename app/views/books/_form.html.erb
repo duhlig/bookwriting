@@ -19,17 +19,17 @@
   </div>
   <br/>
   <div class="field">
-    <%= f.label :abstract %><br />
+    <%= f.label :abstract %>
     <%= f.cktext_area :abstract, :ckeditor => { :toolbar => "bookAbstract" } %>
   </div>
   <br/>
   <div class="field">
-    <%= f.label :text %><br />
+    <%= f.label :text %>
     <%= f.cktext_area :text, :ckeditor => { :toolbar => "bookContent" } %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-info" %>
   </div>
 <% end %>
 </div>

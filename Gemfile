@@ -36,6 +36,9 @@ gem 'paper_trail'
 gem 'turbolinks'
 # HTML parsing
 gem 'nokogiri'
+#pdf
+gem 'pdfkit'
+gem 'wkhtmltopdf'
 
 gem 'bullet', group: :development
 
@@ -53,3 +56,4 @@ gem 'bullet', group: :development
 
 # To use debugger
 # gem 'debugger'
+"gem \"wicked_pdf\"" 
