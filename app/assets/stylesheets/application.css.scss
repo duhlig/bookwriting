@@ -12,7 +12,7 @@
  *= require_tree .
  */
 body{
-  padding-top: 60px;
+  padding-top: 70px;
   background-image: url("bg1.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -21,8 +21,8 @@ body{
   background-color: #BEA487;
 }
 main {
-  padding: 0 30px 30px 30px;
-  margin-bottom: 30px;
+  //padding: 0 30px 30px 30px;
+  padding-bottom: 20px;
   background-color: #fff;
   border: 1px solid #d4d4d4;
   -webkit-border-radius: 4px;
@@ -31,6 +31,9 @@ main {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+.content{
+  margin: 10px 25px
 }
 .section {
   color: #B1A599;
@@ -132,3 +135,8 @@ footer {
   padding-left: 30px;
   padding-bottom: 15px;
 }
+div.field, div.actions {
+  padding-top: 25px;
+  margin-bottom: 10px;
+}
+

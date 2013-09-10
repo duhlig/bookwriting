@@ -3,7 +3,7 @@
 <head>
   <title>Bookwriting</title>
   <%= stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag 'jquery', 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,7 +11,6 @@
 <div class="container">
 
   <header class="navbar navbar-fixed-top">
-
     <nav class="navbar-inner">
       <div class="container">
         <%= link_to "BookWriting", root_path , id: "logo" %>
@@ -25,9 +24,11 @@
   <!--<div><%# link_to image_tag("book.jpg", :height => 50), root_path %> </div> -->
 
   <main>
+    <div class="content">
     <div class="section-titel">
-    <!-- <h1>Welcome <span>to Collaborative Book Writing</span></h1> -->
+      <!-- <h1>Welcome <span>to Collaborative Book Writing</span></h1> -->
     </div><br>
+
     <% flash.each do |name, msg| %>
         <% if msg.is_a?(String) %>
             <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
@@ -38,12 +39,14 @@
     <% end %>
     <%= yield %>
     <footer>
-        <small>
+        <small class="sensor">
           <a href="#">Rails Prototype</a>
           by Uhlig and Bredfeldt
+           <span class="hide_until_hover"> <b>@sWeb Engineering 2013</b></span>
         </small>
         <!--<p><%= debug(params) if Rails.env.development? %> </p> -->
     </footer>
+    </div>
   </main>
 
 </div><!-- end .container -->
