@@ -16,3 +16,17 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+
+$(document).ready(function() {
+    $('.sensor .hide_until_hover')
+        .hide();
+    $('.sensor')
+        .mouseover( function(){
+            $('.hide_until_hover', this).show();
+        })
+        .mouseout( function(){
+            $('.hide_until_hover', this).hide();
+        })
+    ;
+});
