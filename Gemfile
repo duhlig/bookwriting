@@ -34,6 +34,8 @@ gem 'ckeditor'
 gem 'paper_trail'
 # Fasteer Pageloads
 gem 'turbolinks'
+# HTML parsing
+gem 'nokogiri'
 
 gem 'bullet', group: :development
 

@@ -1,0 +1,9 @@
+<% tree.each do |element| %>
+<ul>
+  <% if element.is_a?(String) %>
+    <li><%= element.to_s %></li>
+  <% else %>
+    <%= render 'tree', :tree => element %>
+  <% end %>
+</ul>
+<% end %>
