@@ -20,9 +20,9 @@
     <% end %>
     <h3>Authors</h3>
     <div class="version">
-      <ul>
+      <ul class="unstyled">
         <% @book.authorships.each do |a| %>
-            <li><%= link_to_unless a.user == current_user, "remove", revoke_access_path(a), :method => :post %> | <%= render 'shared/avatar', :hash => a.user.gravatar_hash, :name => a.user.name, :size => 15 %> <%= a.user.name %></li>
+            <li class="hide-until-hover_outer-element"><%= render 'shared/avatar', :hash => a.user.gravatar_hash, :name => a.user.name, :size => 15 %> <%= a.user.name %> <button type="button" class="btn btn-mini btn-danger hide-this-until-hover"><%= link_to_unless a.user == current_user, "x", revoke_access_path(a), :method => :post, :title => "revoke access" %></button></li>
         <% end %>
       </ul>
     </div>
@@ -30,10 +30,10 @@
       <% unless @book.versions.length == 0 %>
           <h3>Previous Versions</h3>
           <div class="version">
-            <ul>
+            <ul class="unstyled">
               <% @book.versions.reverse_each do |v| %>
 	              <% version_author = User.find(v.whodunnit.to_i) %>
-                  <li><%= link_to "revert", revert_version_path(v), :method => :post %> | <%= Time.at(v.created_at).strftime("%d.%m.%y %H:%M") %> | <%= render 'shared/avatar', :hash => version_author.gravatar_hash, :name => version_author.name, :size => 15 %> <%= version_author.name %></li>
+                  <li class="hide-until-hover_outer-element"><%= Time.at(v.created_at).strftime("%d.%m.%y %H:%M") %> | <%= render 'shared/avatar', :hash => version_author.gravatar_hash, :name => version_author.name, :size => 15 %> <%= version_author.name %> <button type="button" class="btn btn-mini btn-primary hide-this-until-hover"><%= link_to "revert", revert_version_path(v), :method => :post %></button></li>
               <% end %>
             </ul></div>
       <% end %>

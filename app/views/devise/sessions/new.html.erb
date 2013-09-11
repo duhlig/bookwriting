@@ -6,11 +6,11 @@
 
       <p><%= f.label :email %>
       <br/>
-      <%= f.email_field :email, :autofocus => true, class:"form-control" %></p>
+      <%= f.email_field :email, :autofocus => true, class:"form-control input-block-level", :required => true %></p>
 
     <p class="spez"><%= f.label :password %>
       <br/>
-      <%= f.password_field :password, class:"form-control"%></p>
+      <%= f.password_field :password, class:"form-control input-block-level", :required => true%></p>
 
       <p  class="checkbox">
       <% if devise_mapping.rememberable? -%>
@@ -18,7 +18,7 @@
       <% end -%>
     </p>
 
-    <p class="submit"><%= f.submit "Sign in", class: "btn btn-large btn-primary" %></p>
+    <p class="submit"><%= f.submit "Sign in", class: "btn btn-large btn-primary btn-block" %></p>
 
 </div>
 <% end %>
