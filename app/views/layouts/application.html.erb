@@ -23,30 +23,18 @@
   </header>
   <!--<div><%# link_to image_tag("book.jpg", :height => 50), root_path %> </div> -->
 
-  <main>
-    <div class="content">
-    <div class="section-titel">
-      <!-- <h1>Welcome <span>to Collaborative Book Writing</span></h1> -->
-    </div><br>
-
-    <% flash.each do |name, msg| %>
-        <% if msg.is_a?(String) %>
-            <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-                <a class="close" data-dismiss="alert">&#215;</a>
-                <%= content_tag :div, msg, :id => "flash_#{name}" %>
-            </div>
-            <% end %>
-    <% end %>
+  <div id="main">
+    <div class="content"><br>
     <%= yield %>
-    <footer>
+    <div id="footer">
         <small class="sensor">
           <a href="#">Rails Prototype</a>
           by Uhlig and Bredfeldt
         </small>
         <!--<p><%= debug(params) if Rails.env.development? %> </p> -->
-    </footer>
     </div>
-  </main>
+    </div>
+  </div>
 
 </div><!-- end .container -->
 </body>

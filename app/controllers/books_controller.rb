@@ -10,10 +10,10 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }
-      format.pdf do
+      format.pdf {
         render :pdf => 'book',
         :template => 'books/show.pdf.erb'
-      end
+      }
     end
   end
 
