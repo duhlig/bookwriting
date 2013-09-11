@@ -4,8 +4,9 @@ $blue: #5E90AF;
 $orange: #EBC85E;
 $brown: #B1A599;
 $brownDark: #8E8071;
+$dark: #776B5E;
 
-$textColor:             $brownDark;
+$textColor:                        $brownDark;
 $btnSuccessBackground:             lighten($green, 10%);
 $btnSuccessBackgroundHighlight:    $green;
 $btnInfoBackground:                lighten($blue, 10%);
@@ -16,6 +17,8 @@ $btnPrimaryBackground:              lighten($brown, 10%);
 $btnPrimaryBackgroundHighlight:     $brown;
 $btnWarningBackground:              lighten($orange, 10%);
 $btnWarningBackgroundHighlight:     $orange;
+$btnInverseBackground:              lighten($brownDark, 10%);
+$btnInverseBackgroundHighlight:     darken($brownDark, 10%);
 $linkColor:             #8E8071;
 //$tableBackgroundHover: #fff0df;
 

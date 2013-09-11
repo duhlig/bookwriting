@@ -39,7 +39,7 @@
           <% else %>
             <%= link_to '<i class="icon-trash icon-white" ></i> Delete'.html_safe, book,method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger' %>
           <% end %>
-          <%= link_to '<i class="icon-file icon-white" ></i> PDF'.html_safe,book_path(book, :format => "pdf"),:class => 'btn btn-warning' %>
+          <%= link_to '<i class="icon-file icon-white" ></i> PDF'.html_safe,book_path(book, :format => "pdf"),:class => 'btn btn-inverse' %>
         </td>
       </tr>
   <% end %>
