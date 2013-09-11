@@ -37,8 +37,8 @@ gem 'turbolinks'
 # HTML parsing
 gem 'nokogiri'
 # HTML to PDF export
-gem 'pdfkit'
-gem 'wkhtmltopdf'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 # Avatar support via Gravatar
 # gem 'avatar'
 

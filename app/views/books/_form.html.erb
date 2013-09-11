@@ -23,10 +23,10 @@
   </div>
   <div class="field">
     <%= f.label :text %>
-    <%= f.cktext_area :text, :ckeditor => { :toolbar => "bookContent" }, :required => true %>
+    <%= f.cktext_area :text, :ckeditor => { :toolbar => "bookContent" } %>
   </div>
   <div class="actions">
-    <%= f.submit :class => "btn btn-large btn-info btn-block" %>
+    <%= f.submit :class => "btn btn-info" %>
   </div>
 <% end %>
 </div>

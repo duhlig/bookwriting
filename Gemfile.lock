@@ -84,7 +84,6 @@ GEM
     paper_trail (2.7.2)
       activerecord (~> 3.0)
       railties (~> 3.0)
-    pdfkit (0.5.4)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -136,7 +135,9 @@ GEM
     uniform_notifier (1.2.0)
     warden (1.2.1)
       rack (>= 1.0)
-    wkhtmltopdf (0.1.2)
+    wicked_pdf (0.9.6)
+      rails
+    wkhtmltopdf-binary (0.9.9.1)
 
 PLATFORMS
   x86-mingw32
@@ -152,10 +153,10 @@ DEPENDENCIES
   omniauth
   omniauth-twitter
   paper_trail
-  pdfkit
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3
   turbolinks
   uglifier (>= 1.0.3)
-  wkhtmltopdf
+  wicked_pdf
+  wkhtmltopdf-binary
