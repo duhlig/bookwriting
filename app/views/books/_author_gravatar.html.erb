@@ -1,0 +1,16 @@
+<%#
+	required: author array
+	optional: max_authors number
+%>
+<% if not defined? max_authors
+	   max_authors = 3
+   end
+
+   authors.take(max_authors).each do |a|
+%>
+<%= render 'shared/avatar', :hash => a[:gravatar_hash], :name => a[:name] %>
+<% end
+   if authors.length > max_authors
+%>
+<%= "(+#{authors.length-max_authors} more)" %>
+<% end %>

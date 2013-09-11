@@ -3,8 +3,8 @@
   <li class="active">/ Show</li>
 </ol>
 <div class="fltrt">
-  <button type="button" class="btn btn-primary"><%= link_to 'Edit Book', edit_book_path(@book) %></button>
-  <button type="button" class="btn btn-info"><%= link_to 'PDF',:action => 'show', :format => :pdf %></button>
+  <button type="button" class="btn btn-primary"><i class="icon-pencil icon-white" ></i> <%= link_to 'Edit Book', edit_book_path(@book) %></button>
+  <button type="button" class="btn btn-info"><i class="icon-file icon-white" ></i> <%= link_to 'PDF', :action => 'show', :format => :pdf %></button>
 </div> <div class="clearfloat"></div>
 
 <h1><%= @book.title %></h1>

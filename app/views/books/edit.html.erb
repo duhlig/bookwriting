@@ -3,7 +3,7 @@
   <li class="active">/ Edit</li>
 </ol>
 <div class="fltrt">
-  <button type="button" class="btn btn-info"><%= link_to 'Show Book', @book %></button>
+  <button type="button" class="btn btn-info"><i class="icon-book icon-white" ></i> <%= link_to 'Show Book', @book %></button>
 </div><div class="clearfloat"></div>
 <h2>Book: <%= @book.title %></h2>
 <div class="row-fluid">
@@ -22,7 +22,7 @@
     <div class="version">
       <ul class="unstyled">
         <% @book.authorships.each do |a| %>
-            <li class="hide-until-hover_outer-element"><%= render 'shared/avatar', :hash => a.user.gravatar_hash, :name => a.user.name, :size => 15 %> <%= a.user.name %> <button type="button" class="btn btn-mini btn-danger hide-this-until-hover"><%= link_to_unless a.user == current_user, "x", revoke_access_path(a), :method => :post, :title => "revoke access" %></button></li>
+            <li class="hide-until-hover_outer-element"><%= render 'shared/avatar', :hash => a.user.gravatar_hash, :name => a.user.name, :size => 15 %> <%= a.user.name %> <button type="button" class="btn btn-mini btn-danger hide-this-until-hover"><i class="icon-remove icon-white" ></i> <%= link_to_unless a.user == current_user, "Revoke Access", revoke_access_path(a), :method => :post %></button></li>
         <% end %>
       </ul>
     </div>
@@ -33,7 +33,7 @@
             <ul class="unstyled">
               <% @book.versions.reverse_each do |v| %>
 	              <% version_author = User.find(v.whodunnit.to_i) %>
-                  <li class="hide-until-hover_outer-element"><%= Time.at(v.created_at).strftime("%d.%m.%y %H:%M") %> | <%= render 'shared/avatar', :hash => version_author.gravatar_hash, :name => version_author.name, :size => 15 %> <%= version_author.name %> <button type="button" class="btn btn-mini btn-primary hide-this-until-hover"><%= link_to "revert", revert_version_path(v), :method => :post %></button></li>
+                  <li class="hide-until-hover_outer-element"><%= Time.at(v.created_at).strftime("%d.%m.%y %H:%M") %> | <%= render 'shared/avatar', :hash => version_author.gravatar_hash, :name => version_author.name, :size => 15 %> <%= version_author.name %> <button type="button" class="btn btn-mini btn-primary hide-this-until-hover"><i class="icon-repeat icon-white" ></i> <%= link_to "Revert", revert_version_path(v), :method => :post %></button></li>
               <% end %>
             </ul></div>
       <% end %>
