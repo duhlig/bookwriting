@@ -11,7 +11,6 @@
 <div style="padding-top: 30px; min-height: 150px"><table style="text-align: left; width: 100%" class="table-bordered table-hover">
   <thead><tr>
     <th>Title</th>
-    <th>Abstract</th>
     <th>Authors</th>
     <th>Version</th>
     <th>Updated</th>
@@ -21,15 +20,14 @@
   <% @books.each do |book| %>
       <tr>
         <td><%= book.title %></td>
-        <td><%= raw truncate book.abstract, length: 80 %></td>
-        <td><%= book.author_names.join ", " %></td>
+        <td><% book.authors.each do |a| %><%= render 'shared/avatar', :hash => a[:gravatar_hash], :name => a[:name] %><% end %></td>
         <td><%= book.versions.length + 1 %></td>
         <td><%= "#{time_ago_in_words(book.updated_at)} ago" %></td>
         <td class="rt-book">
             <button type="button" class="btn btn-info"><%= link_to 'Show', book %></button>
             <button type="button" class="btn btn-primary"><%= link_to 'Edit', edit_book_path(book) %> </button>
             <% if book.users.length > 1 %>
-              <button type="button" class="btn btn-warning"><%= link_to 'Leave',  revoke_access_path(book.user_authorship(current_user)), :method => :post, :class => "delete" %></button>
+              <button type="button" class="btn btn-warning"><%= link_to 'Leave', revoke_access_path(book.user_authorship(current_user)), :method => :post, :class => "delete" %></button>
             <% else %>
             <button type="button" class="btn btn-danger"><%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete" %></button>
             <button type="button" class="btn btn-warning" id="pdf_link"><%= link_to "PDF", book_path(book, :format => "pdf") %></button>

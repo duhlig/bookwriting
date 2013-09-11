@@ -7,18 +7,15 @@
   <button type="button" class="btn btn-info"><%= link_to 'PDF',:action => 'show', :format => :pdf %></button>
 </div> <div class="clearfloat"></div>
 
-<p>
-  <b>Title:</b>
-  <%= @book.title %>
-</p>
+<h1><%= @book.title %></h1>
+<p>by <%= @book.author_names.join ", " %></p>
+<hr>
 
-<p>
-  <b>Abstract:</b><br/>
-  <%= raw @book.abstract %>
-</p>
 
-<p>
-  <b>Text:</b><br/>
-  <%= raw @book.text %>
-</p>
+<h3>Abstract</h2>
+<p><%= raw @book.abstract %></p>
+<hr>
+
+<h3>Content</h2>
+<p><%= raw @book.text %></p>
 

@@ -26,19 +26,21 @@ gem 'jquery-rails'
 # Authentication
 gem 'devise'
 # OAuth for devise
-gem 'omniauth'
-gem 'omniauth-twitter'
+# gem 'omniauth'
+# gem 'omniauth-twitter'
 # WYSIWYG Editor
 gem 'ckeditor'
 # Versioning
 gem 'paper_trail'
-# Fasteer Pageloads
+# Faster Pageloads
 gem 'turbolinks'
 # HTML parsing
 gem 'nokogiri'
-#pdf
+# HTML to PDF export
 gem 'pdfkit'
 gem 'wkhtmltopdf'
+# Avatar support via Gravatar
+# gem 'avatar'
 
 gem 'bullet', group: :development
 

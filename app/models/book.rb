@@ -43,6 +43,17 @@ class Book < ActiveRecord::Base
     self.users.map { |u| u.name }
   end
 
+  def authors
+	# self.users.map { |u| {:name => u.name, :hash => u.gravatar_hash } }
+	authors = []
+	self.users.each do |u|
+		authors << { :name => u.name, :gravatar_hash => u.gravatar_hash }
+		logger.debug("----> hash: #{u.gravatar_hash}")
+	end
+	logger.debug(authors)
+	authors
+  end
+
   def user_authorship(user)
     Authorship.find_by_book_id_and_user_id(self.id, user.id)
   end
@@ -54,7 +65,6 @@ class Book < ActiveRecord::Base
 	doc.xpath('//h1 | //h2 | //h3').each do |h|
 		headlines << {:level => h.name, :content => h.content}
 	end
-	logger.debug("-----> #{headlines}")
 	chapter_tree_helper headlines
   end
 
