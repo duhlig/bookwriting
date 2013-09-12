@@ -31,7 +31,7 @@
             <li><%= render 'shared/avatar', :hash => a.user.gravatar_hash, :name => a.user.name, :size => 15 %> <%= a.user.name %></li>
         <% end %>
       </ul>
-      <button type="button" class="btn btn-small btn-primary"><i class="icon-user icon-white" ></i> <%= link_to 'Manage', edit_authorships_path(@book) %></button>
+      <% if @book.edit_authorship_permission?(current_user) %><button type="button" class="btn btn-small btn-primary"><i class="icon-user icon-white" ></i> <%= link_to 'Manage', edit_authorships_path(@book) %></button><% end %>
     </div>
     <div>
       <% unless @book.versions.length == 0 %>

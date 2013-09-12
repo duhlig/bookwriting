@@ -58,6 +58,11 @@ class Book < ActiveRecord::Base
     Authorship.find_by_book_id_and_user_id(self.id, user.id)
   end
 
+  def edit_authorship_permission?(user)
+	  a = user_authorship(user)
+	  a.can_invite_authors || a.can_manage_authors || a.can_delete_authors
+  end
+
 
   def chapter_tree
 	headlines = []
@@ -67,6 +72,8 @@ class Book < ActiveRecord::Base
 	end
 	chapter_tree_helper headlines
   end
+
+  private
 
   def chapter_tree_helper(headlines, level = nil, is_root = true)
     tree = []

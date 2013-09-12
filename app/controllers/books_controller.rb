@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   before_filter :authenticate_user!
   before_filter :user_has_permission, :only => [:show, :edit, :update, :destroy]
+  before_filter :user_can_edit, :only => [:edit, :update]
 
   # GET /books/1
   # GET /books/1.json
@@ -91,5 +92,14 @@ class BooksController < ApplicationController
     unless Authorship.exists?({:book_id => @book.id, :user_id => current_user.id})
       redirect_to root_path, :notice => "You do not have permission to access this book"
     end
+  end
+
+  private
+
+  def user_can_edit
+	  @book = Book.find(params[:id])
+	  unless Authorship.find_by_book_id_and_user_id(@book.id, current_user.id).can_edit_book
+		  redirect_to root_path, :notice => "You do not have permission to edit this book"
+	  end
   end
 end

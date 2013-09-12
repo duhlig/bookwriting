@@ -1,10 +1,10 @@
+<% current_user_authorship = Authorship.find_by_book_id_and_user_id(@book.id, current_user.id) %>
 <h2><%= @book.title %></h2>
-<% unless @users.empty? %>
+<% unless @users.empty? || !current_user_authorship.can_invite_authors %>
 <h3>Invite User</h3>
 <%= form_tag "create", :method => :put do %>
 <%= fields_for "authorship", @authorship do |f| %>
   <div class="field">
-    <%#= f.text_field :email, :class => "input-block-level", :placeholder => "Users E-Mail Address"#, :required => true %>
     <% users = @users.map { |u| ["#{u.name} (#{u.email})", u.id] } %>
     <%= f.select :user_id, options_for_select(users) %><br>
     <label class="checkbox inline"><%= f.check_box :can_edit_book %> Edit book?</label>
@@ -20,27 +20,34 @@
 <% end %>
 
 <h3>Edit authorships</h3>
-
 <%= form_tag "update", :method => :put do %>
 <table class="table-bordered table-hover">
 	<thead><tr>
 	  <th>Name</th>
+	  <% if current_user_authorship.can_manage_authors %>
 	  <th>Edit Book?</th>
 	  <th>Invite Authors?</th>
 	  <th>Delete Authors?</th>
 	  <th>Manage Permissions?</th>
+	  <% end %>
+	  <% if current_user_authorship.can_delete_authors %>
 	  <th>Actions</th>
+	  <% end %>
 	</tr></thead>
 	<tbody>
 	<% @authorships.each do |authorship| %>
 		<%= fields_for "authorships[]", authorship do |f| %>
 		<tr>
 		  <td><%= authorship.user.name %></td>
+		  <% if current_user_authorship.can_manage_authors %>
 		  <td><%= f.check_box :can_edit_book %></td>
 		  <td><%= f.check_box :can_invite_authors %></td>
 		  <td><%= f.check_box :can_delete_authors %></td>
 		  <td><%= f.check_box :can_manage_authors %></td>
-		  <td><button type="button" class="btn btn-danger"><i class="icon-remove icon-white" ></i> <%= link_to_unless authorship.user == current_user, "Revoke Access", revoke_access_path(authorship), :method => :post %></button></td>
+		  <% end %>
+		  <% if current_user_authorship.can_delete_authors %>
+		  <td><% unless authorship.user == current_user %><button type="button" class="btn btn-danger"><i class="icon-remove icon-white" ></i> <%= link_to "Revoke Access", revoke_access_path(authorship), :method => :post %></button><% end %></td>
+		  <% end %>
 		</tr>
 		<% end %>
 	<% end %>

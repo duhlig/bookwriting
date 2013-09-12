@@ -3,7 +3,7 @@
   <li class="active">/ Show</li>
 </ol>
 <div class="fltrt">
-  <button type="button" class="btn btn-primary"><i class="icon-pencil icon-white" ></i> <%= link_to 'Edit Book', edit_book_path(@book) %></button>
+  <% if Authorship.find_by_book_id_and_user_id(@book.id, current_user.id).can_edit_book %><button type="button" class="btn btn-primary"><i class="icon-pencil icon-white" ></i> <%= link_to 'Edit Book', edit_book_path(@book) %></button><% end %>
   <button type="button" class="btn btn-inverse"><i class="icon-file icon-white" ></i> <%= link_to 'PDF', :action => 'show', :format => :pdf %></button>
 </div> <div class="clearfloat"></div>
 

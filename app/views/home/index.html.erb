@@ -26,15 +26,16 @@
   </tr></thead>
   <tbody>
   <% @books.each do |book| %>
+      <% current_user_authorship = Authorship.find_by_book_id_and_user_id(book.id, current_user.id) %>
       <tr>
         <td><%= book.title %></td>
         <td><%= render 'books/author_gravatar', :authors => book.authors, :max_authors => 3 %></td>
-        <td><button type="button" class="btn btn-primary"><i class="icon-user icon-white" ></i> <%= link_to 'Manage', edit_authorships_path(book) %></button></td>
+        <td><% if book.edit_authorship_permission?(current_user) %><button type="button" class="btn btn-primary"><i class="icon-user icon-white" ></i> <%= link_to 'Manage', edit_authorships_path(book) %></button><% end %></td>
         <td><%= book.versions.length + 1 %></td>
         <td><%= "#{time_ago_in_words(book.updated_at)} ago" %></td>
         <td class="rt-book">
           <%= link_to '<i class="icon-book icon-white"></i> Show'.html_safe, book,:class => 'btn btn-info' %>
-          <%= link_to '<i class="icon-pencil icon-white"></i> Edit'.html_safe, edit_book_path(book),:class => 'btn btn-primary' %>
+          <% if current_user_authorship.can_edit_book %><%= link_to '<i class="icon-pencil icon-white"></i> Edit'.html_safe, edit_book_path(book),:class => 'btn btn-primary' %><% end %>
           <% if book.users.length > 1 %>
             <%= link_to '<i class="icon-remove icon-white" ></i> Leave'.html_safe, revoke_access_path(book.user_authorship(current_user)), :method => :post,:class => 'btn btn-warning delete' %>
           <% else %>

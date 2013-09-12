@@ -1,6 +1,9 @@
 class AuthorshipsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter
+  before_filter :user_has_permission
+  before_filter :user_can_manage_authors, :only => [:update]
+  before_filter :user_can_invite_authors, :only => [:create]
+  before_filter :user_can_delete_authors, :only => [:revoke]
 
   def edit
 	@book = Book.find(params[:id])
@@ -68,6 +71,50 @@ class AuthorshipsController < ApplicationController
 		end
 	end
 	users
+  end
+
+  private
+
+  def user_has_permission
+    a = current_user_authorship
+    if a.nil?
+      redirect_to root_path, :notice => "You do not have permission to view this page"
+    end
+	unless a.can_delete_authors || a.can_manage_authors || a.can_invite_authors
+	  redirect_to root_path, :notice => "You do not have permission to view this page"
+	end
+
+  end
+
+  private
+
+  def user_can_invite_authors
+	  unless current_user_authorship.can_invite_authors
+		  redirect_to root_path, :notice => "You do not have permission to edit this book"
+	  end
+  end
+
+  private
+
+  def user_can_delete_authors
+	  unless current_user_authorship.can_delete_authors
+		  redirect_to root_path, :notice => "You do not have permission to edit this book"
+	  end
+  end
+
+  private
+
+  def user_can_manage_authors
+	  unless current_user_authorship.can_manage_authors
+		  redirect_to root_path, :notice => "You do not have permission to edit this book"
+	  end
+  end
+
+  private
+
+  def current_user_authorship
+	  book = Book.find(params[:id])
+	  Authorship.find_by_book_id_and_user_id(book.id, current_user.id)
   end
 
 end
