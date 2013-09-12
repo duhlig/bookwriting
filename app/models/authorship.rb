@@ -1,4 +1,6 @@
 class Authorship < ActiveRecord::Base
+  attr_accessible :can_edit_book, :can_invite_authors, :can_delete_authors, :can_manage_authors, :user_id
+
   belongs_to :user
   belongs_to :book
 

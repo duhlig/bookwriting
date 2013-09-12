@@ -1,0 +1,52 @@
+<h2><%= @book.title %></h2>
+<% unless @users.empty? %>
+<h3>Invite User</h3>
+<%= form_tag "create", :method => :put do %>
+<%= fields_for "authorship", @authorship do |f| %>
+  <div class="field">
+    <%#= f.text_field :email, :class => "input-block-level", :placeholder => "Users E-Mail Address"#, :required => true %>
+    <% users = @users.map { |u| ["#{u.name} (#{u.email})", u.id] } %>
+    <%= f.select :user_id, options_for_select(users) %><br>
+    <label class="checkbox inline"><%= f.check_box :can_edit_book %> Edit book?</label>
+    <label class="checkbox inline"><%= f.check_box :can_invite_authors %> Invite Authors?</label>
+    <label class="checkbox inline"><%= f.check_box :can_delete_authors %> Delete Authors?</label>
+    <label class="checkbox inline"><%= f.check_box :can_manage_authors %> Manage Permissions?</label>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => "btn btn-info btn-block btn-big" %>
+  </div>
+<% end %>
+<% end %>
+<% end %>
+
+<h3>Edit authorships</h3>
+
+<%= form_tag "update", :method => :put do %>
+<table class="table-bordered table-hover">
+	<thead><tr>
+	  <th>Name</th>
+	  <th>Edit Book?</th>
+	  <th>Invite Authors?</th>
+	  <th>Delete Authors?</th>
+	  <th>Manage Permissions?</th>
+	  <th>Actions</th>
+	</tr></thead>
+	<tbody>
+	<% @authorships.each do |authorship| %>
+		<%= fields_for "authorships[]", authorship do |f| %>
+		<tr>
+		  <td><%= authorship.user.name %></td>
+		  <td><%= f.check_box :can_edit_book %></td>
+		  <td><%= f.check_box :can_invite_authors %></td>
+		  <td><%= f.check_box :can_delete_authors %></td>
+		  <td><%= f.check_box :can_manage_authors %></td>
+		  <td><button type="button" class="btn btn-danger"><i class="icon-remove icon-white" ></i> <%= link_to_unless authorship.user == current_user, "Revoke Access", revoke_access_path(authorship), :method => :post %></button></td>
+		</tr>
+		<% end %>
+	<% end %>
+	</tbody>
+</table>
+<div class="actions">
+	<%= submit_tag "Update", :class => "btn btn-info btn-block btn-big" %>
+</div>
+<% end %>

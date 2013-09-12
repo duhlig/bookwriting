@@ -22,9 +22,10 @@
     <div class="version">
       <ul class="unstyled">
         <% @book.authorships.each do |a| %>
-            <li class="hide-until-hover_outer-element"><%= render 'shared/avatar', :hash => a.user.gravatar_hash, :name => a.user.name, :size => 15 %> <%= a.user.name %> <button type="button" class="btn btn-mini btn-danger hide-this-until-hover"><i class="icon-remove icon-white" ></i> <%= link_to_unless a.user == current_user, "Revoke Access", revoke_access_path(a), :method => :post %></button></li>
+            <li><%= render 'shared/avatar', :hash => a.user.gravatar_hash, :name => a.user.name, :size => 15 %> <%= a.user.name %></li>
         <% end %>
       </ul>
+      <button type="button" class="btn btn-small btn-primary"><i class="icon-user icon-white" ></i> <%= link_to 'Manage', edit_authorships_path(@book) %></button>
     </div>
     <div>
       <% unless @book.versions.length == 0 %>

@@ -66,6 +66,9 @@ Bookwriting::Application.routes.draw do
 
   post "versions/:id/revert" => "versions#revert", :as => "revert_version"
   post "authorships/:id/revoke" => "authorships#revoke", :as => "revoke_access"
+  get "authorships/:id/edit" => "authorships#edit", :as => "edit_authorships"
+  put "authorships/:id/update" => "authorships#update", :as => "update_authorships"
+  put "authorships/:id/create" => "authorships#create", :as => "create_authorship"
 
   match "users/auth/:provider/callback" => "authentications#create"
 end

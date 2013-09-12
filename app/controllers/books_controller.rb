@@ -41,6 +41,12 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
+		authorship = Authorship.find_by_book_id_and_user_id(@book.id, current_user.id)
+		authorship.can_edit_book = true
+		authorship.can_delete_authors = true
+		authorship.can_invite_authors = true
+		authorship.can_manage_authors = true
+		authorship.save
         format.html { render action: "edit", notice: 'Book was successfully created.' }
         format.json { render json: @book, status: :created, location: @book }
       else

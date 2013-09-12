@@ -11,7 +11,7 @@
 <div style="padding-top: 30px; min-height: 150px"><table style="text-align: left; width: 100%" class="table-bordered table-hover">
   <thead><tr>
     <th>Title</th>
-    <th>Authors</th>
+    <th colspan=2>Authors</th>
     <th>Version</th>
     <th>Updated</th>
     <th>Actions</th>
@@ -21,6 +21,7 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= render 'books/author_gravatar', :authors => book.authors, :max_authors => 3 %></td>
+        <td><button type="button" class="btn btn-primary"><i class="icon-user icon-white" ></i> <%= link_to 'Manage', edit_authorships_path(book) %></button></td>
         <td><%= book.versions.length + 1 %></td>
         <td><%= "#{time_ago_in_words(book.updated_at)} ago" %></td>
         <td class="rt-book">
