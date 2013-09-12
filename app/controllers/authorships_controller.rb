@@ -1,6 +1,6 @@
 class AuthorshipsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :user_has_permission
+  before_filter :user_has_permission, :only => [:update, :create]
   before_filter :user_can_manage_authors, :only => [:update]
   before_filter :user_can_invite_authors, :only => [:create]
   before_filter :user_can_delete_authors, :only => [:revoke]
@@ -97,6 +97,8 @@ class AuthorshipsController < ApplicationController
   private
 
   def user_can_delete_authors
+	  authorship_to_delete = Authorship.find(params[:id])
+	  current_user_authorship = Authorship.find_by_book_id_and_user_id(authorship_to_delete.book_id, current_user.id)
 	  unless current_user_authorship.can_delete_authors
 		  redirect_to root_path, :notice => "You do not have permission to edit this book"
 	  end

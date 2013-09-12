@@ -39,7 +39,7 @@
 	<% @authorships.each do |authorship| %>
 		<%= fields_for "authorships[]", authorship do |f| %>
 		<tr>
-		  <td><%= authorship.user.name %></td>
+		  <td><%= render 'shared/avatar', :size => 15, :hash => authorship.user.gravatar_hash(authorship.user_id), :name => authorship.user.name %> <%= authorship.user.name %></td>
 		  <% if current_user_authorship.can_manage_authors %>
 		  <td><%= f.check_box :can_edit_book %></td>
 		  <td><%= f.check_box :can_invite_authors %></td>
