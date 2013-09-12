@@ -1,14 +1,7 @@
-<ol class="breadcrumb">
-  <li><%= link_to 'Home ', root_path %></li>
-  <li class="active">/ Edit</li>
-</ol>
+<%= render 'shared/breadcrumb', :page_name => "/ #{link_to @book.title, book_path(@book)} / Edit".html_safe %>
 <div class="fltrt">
-  <button type="button" class="btn btn-info"><i class="icon-book icon-white" ></i>
-    <%= link_to 'Show Book', @book %>
-  </button>
-  <button type="button" class="btn btn-inverse"><i class="icon-book icon-white" ></i>
-    <%= link_to 'Export to PDF',:action => 'show', :format => :pdf %>
-  </button>
+  <%= render 'shared/link_button',:icon =>'book',:link=> book_path(@book),:text =>'Show Book',:css=>'btn-info' %>
+  <%= render 'shared/link_button',:icon =>'file',:link=> book_path(@book, :format => "pdf"),:text =>'Export to PDF',:css=>'btn-inverse' %>
 </div><div class="clearfloat"></div>
 
 <h2>Book: <%= @book.title %></h2>

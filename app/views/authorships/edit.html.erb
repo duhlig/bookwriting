@@ -1,3 +1,4 @@
+<%= render 'shared/breadcrumb', :page_name => "/ #{link_to @book.title, book_path(@book)} / Authors".html_safe %>
 <% current_user_authorship = Authorship.find_by_book_id_and_user_id(@book.id, current_user.id) %>
 <h2><%= @book.title %></h2>
 <% unless @users.empty? || !current_user_authorship.can_invite_authors %>

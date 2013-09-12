@@ -1,14 +1,15 @@
 <div>
-  <div style="font-size: 48px;text-align: center;padding-bottom:45px;border-bottom: 1px solid #eee;">
+  <div style="font-size: 48px;text-align: center;padding-bottom:45px;border-bottom: 1px solid #eee;padding-top:300px">
     <h1><%= @book.title %></h1>
   </div>
-  <div style="font-size: 25px;text-align: center;padding-bottom: 640px;page-break-after:always;">
-    <p>by <%= @book.author_names.join ',' %> , Version <%= @book.versions.length + 1 %></p>
-    <p>Update: <%= @book.updated_at %></p>
+  <div style="font-size: 25px;text-align: center;page-break-after:always;">
+    <p>by <%= @book.author_names.join ', ' %></p>
+    <p>Version <%= @book.versions.length + 1 %>, Last update: <%= @book.updated_at %></p>
   </div><br>
 
   <div style="page-break-after:always;">
-    <%= raw @book.abstract %>
+    <h2>Abstract</h2>
+    <i><%= raw @book.abstract %></i>
   </div><br>
 
   <div>
