@@ -1,10 +1,7 @@
-<ol class="breadcrumb">
-  <li><%= link_to 'Home ', root_path %></li>
-  <li class="active">/ Show</li>
-</ol>
+<%= render 'shared/breadcrumb', :page_name => '/ Show' %>
 <div class="fltrt">
-  <button type="button" class="btn btn-primary"><i class="icon-pencil icon-white" ></i> <%= link_to 'Edit Book', edit_book_path(@book) %></button>
-  <button type="button" class="btn btn-inverse"><i class="icon-file icon-white" ></i> <%= link_to 'PDF', :action => 'show', :format => :pdf %></button>
+  <%= render 'shared/link_button',:icon =>'pencil',:link=> edit_book_path(@book),:text =>'Edit',:css=>'btn-primary' %>
+  <%= render 'shared/link_button',:icon =>'file',:link=> book_path(@book, :format => "pdf"),:text =>'Export to PDF',:css=>'btn-inverse' %>
 </div> <div class="clearfloat"></div>
 
 <h1><%= @book.title %></h1>

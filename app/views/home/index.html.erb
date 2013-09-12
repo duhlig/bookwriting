@@ -1,20 +1,10 @@
-<ol class="breadcrumb">
-  <li class="active"><%= link_to 'Home ', root_path %></li>
-</ol><br>
-<% flash.each do |name, msg| %>
-    <% if msg.is_a?(String) %>
-        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-          <a class="close" data-dismiss="alert">&#215;</a>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        </div>
-    <% end %>
-<% end %>
+<%= render 'shared/breadcrumb', :page_name => '' %>
+<%= render 'shared/flash_messages', flash: flash %>
 <div class="section">
   <h2><%= image_tag "book_icon.jpg" %><span style="padding-left: 10px">Your Books</span></h2>
 </div>
-<button type="button" class="btn btn-success fltrt"><i class="icon-plus icon-white" ></i>
-  <%= link_to 'New Book', new_book_path %>
-</button><br>
+<%= render 'shared/link_button',:icon =>'plus',:text =>'New Book',:css=>'btn-success fltrt',:link=> new_book_path %><br>
+<%# link_to 'New Book', new_book_path %>
 <div class="con-table">
   <table class="table-bordered table-hover">
   <thead><tr>
@@ -32,14 +22,15 @@
         <td><%= book.versions.length + 1 %></td>
         <td><%= "#{time_ago_in_words(book.updated_at)} ago" %></td>
         <td class="rt-book">
-          <%= link_to '<i class="icon-book icon-white"></i> Show'.html_safe, book,:class => 'btn btn-info' %>
-          <%= link_to '<i class="icon-pencil icon-white"></i> Edit'.html_safe, edit_book_path(book),:class => 'btn btn-primary' %>
+          <%= render 'shared/link_button',:icon =>'book',:link=> book_path(book),:text =>'Show',:css=>'btn-info' %>
+          <%= render 'shared/link_button',:icon =>'file',:link=> book_path(book, :format => "pdf"),:text =>'PDF',:css=>'btn-inverse' %>
+          <%= render 'shared/link_button',:icon =>'pencil',:link=> edit_book_path(book),:text =>'Edit',:css=>'btn-primary' %>
           <% if book.users.length > 1 %>
-            <%= link_to '<i class="icon-remove icon-white" ></i> Leave'.html_safe, revoke_access_path(book.user_authorship(current_user)), :method => :post,:class => 'btn btn-warning delete' %>
+              <%= render 'shared/link_button',:icon =>'remove',:link=> revoke_access_path(book.user_authorship(current_user)), :method => :post,:text =>'Leave',:css=>'btn-warning' %>
           <% else %>
-            <%= link_to '<i class="icon-trash icon-white" ></i> Delete'.html_safe, book,method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger' %>
+              <%# render 'shared/link_button',:icon =>'trash',:link=> book,method: :delete, data: { confirm: 'Are you sure?' },:text =>'Delete',:css=>'btn-danger' %>
+              <%= link_to '<i class="icon-trash icon-white" ></i> Delete'.html_safe, book,method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger' %>
           <% end %>
-          <%= link_to '<i class="icon-file icon-white" ></i> PDF'.html_safe,book_path(book, :format => "pdf"),:class => 'btn btn-inverse' %>
         </td>
       </tr>
   <% end %>
