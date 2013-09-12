@@ -20,7 +20,7 @@ body{
   background-size: cover;
   background-color: #BEA487;
 }
-main {
+#main {
   //padding: 0 30px 30px 30px;
   padding-bottom: 20px;
   background-color: #fff;
@@ -85,8 +85,8 @@ button a, button a:hover, button a:focus{
     text-decoration: none;
   }
 }
-
-footer {
+/* footer */
+#footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
@@ -117,6 +117,12 @@ footer {
   line-height: 0px;
 }
 /* table */
+.con-table {
+  padding-top: 30px; min-height: 150px;
+  table {
+  text-align: left; width: 100%
+  }
+}
 .rt-back{
   text-align: right;
   padding-right: 10px;
@@ -146,7 +152,6 @@ field label{
 @media print {
   body {
     background-color: #FFF;
-    background-color: #5E90AF;
   }
   #container {
     width: auto;
